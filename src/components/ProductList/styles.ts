@@ -60,7 +60,7 @@ export const ProductListContainer = styled.div<Omit<Props, 'title' | 'efoods'>>`
           line-height: ${(props) =>
             props.background === 'dark' ? '18.75px' : '21.09px'};
           margin-top: ${(props) => (props.background === 'dark' ? '0' : '')};
-          width: ${(props) => (props.background === 'dark' ? '124px' : '')};
+          width: ${(props) => (props.background === 'dark' ? '100%' : '')};
           height: ${(props) => (props.background === 'dark' ? '19px' : '')};
         }
 
@@ -83,6 +83,7 @@ export const ProductListContainer = styled.div<Omit<Props, 'title' | 'efoods'>>`
           color: ${(props) =>
             props.background === 'dark' ? colors.rosePink : colors.palePeach};
           height: ${(props) => (props.background === 'dark' ? '24px' : '')};
+          margin-left: 8px;
         }
       }
     }
@@ -92,8 +93,9 @@ export const ProductListContainer = styled.div<Omit<Props, 'title' | 'efoods'>>`
 export const ProductListItem = styled.ul<Omit<Props, 'title' | 'efoods'>>`
   max-width: 1024px;
   width: 100%;
-  max-height: ${(props) => (props.background === 'dark' ? '708px' : '1290px')};
   height: 100%;
+  /* max-height: ${(props) =>
+    props.background === 'dark' ? '708px' : '1290px'}; */
   display: grid;
   grid-template-columns: ${(props) =>
     props.background === 'dark' ? '1fr 1fr 1fr' : '1fr 1fr'};

@@ -1,5 +1,10 @@
-import { Link, useLocation } from 'react-router-dom'
-
+import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import RestaurantRatingImg from '../../assets/icons/estrela.png'
+import Tag from '../../components/Tag'
+import { CardapioItem } from '../../pages/Perfil'
+import Botao from '../Button'
+import ModalPoupap from '../Modal'
 import {
   CardConteiner,
   CardRestaurant,
@@ -10,59 +15,89 @@ import {
   RatingStar
 } from './styles'
 
-import RestaurantRatingImg from '../../assets/icons/estrela.png'
-
-import Tag from '../../components/Tag'
-import Botao from '../Button'
-
 export type Props = {
-  title: string
-  description: string
-  infos: string[]
-  nota: string
   image: string
+  infos: string[]
+  title: string
+  nota: number
+  description: string
+  to: string
   background: 'light' | 'dark'
+  currentItem: CardapioItem
+  shouldTruncateDescription?: boolean
 }
 
-const Products = ({ title, description, infos, nota, image }: Props) => {
+const Products: React.FC<Props> = ({
+  image,
+  infos,
+  title,
+  nota,
+  description,
+  to,
+  background,
+  currentItem,
+  shouldTruncateDescription = false
+}) => {
   const location = useLocation()
+  const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const buttonText =
-    location.pathname === '/Perfil' ? 'Adicionar ao carrinho' : 'Saiba mais'
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible)
+  }
+
+  const getTruncatedDescription = (description: string) => {
+    if (description && description.length > 160) {
+      return description.slice(0, 160) + '...'
+    }
+    return description
+  }
 
   return (
     <div className="container">
-      <>
-        <CardConteiner>
-          <CardRestaurant>
-            <Imagem style={{ backgroundImage: `url(${image})` }} />
-            <Infos>
-              {infos.map((info) => (
-                <Tag key={info}>{info}</Tag>
-              ))}
-            </Infos>
-            <ContainerDescritivo>
-              <LineSection>
-                <h3 className="tituloCard">{title}</h3>
-                <div className="Rating">
-                  <h3 className="nota">{nota}</h3>
-                  <RatingStar
-                    style={{ backgroundImage: `url(${RestaurantRatingImg})` }}
-                  />
-                </div>
-              </LineSection>
-              <p>{description}</p>
-              <Link to="/Perfil">
-                <Tag size="big">
-                  <Botao type="button" title={buttonText} background={'light'}>
-                    {buttonText}
-                  </Botao>
-                </Tag>
-              </Link>
-            </ContainerDescritivo>
-          </CardRestaurant>
-        </CardConteiner>
-      </>
+      <CardConteiner>
+        <CardRestaurant>
+          <Imagem style={{ backgroundImage: `url(${image})` }} />
+          <Infos>
+            {infos.map((info, index) => (
+              <Tag key={index}>{info}</Tag>
+            ))}
+          </Infos>
+          <ContainerDescritivo>
+            <LineSection>
+              <h3 className="tituloCard">{title}</h3>
+              <div className="Rating">
+                <h3 className="nota">{nota}</h3>
+                <RatingStar
+                  style={{ backgroundImage: `url(${RestaurantRatingImg})` }}
+                />
+              </div>
+            </LineSection>
+            <p>
+              {shouldTruncateDescription &&
+              location.pathname.includes('/perfil')
+                ? getTruncatedDescription(description)
+                : description}
+            </p>
+            <Botao
+              type="button"
+              onClick={toggleModal}
+              title="Adicionar ao carrinho"
+              background={background}
+            >
+              Adicionar ao carrinho
+            </Botao>
+          </ContainerDescritivo>
+        </CardRestaurant>
+      </CardConteiner>
+      {isModalVisible && (
+        <ModalPoupap
+          onClose={toggleModal}
+          foto={currentItem.foto}
+          descricao={currentItem.descricao}
+          preco={currentItem.preco}
+          nome={currentItem.nome}
+        />
+      )}
     </div>
   )
 }
