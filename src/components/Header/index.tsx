@@ -1,57 +1,18 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import LogoImgHome from '../../assets/icons/logo.png'
-import BannerImgHome from '../../assets/images/BannerImgHome.png'
-import {
-  CarrinhoDeProdutos,
-  ContainerHeader,
-  HeaderPage,
-  Imagem,
-  RestaurantName,
-  Titulo
-} from './styles'
+import { HeaderBar } from './styles'
+import bgHeader from '../../assets/image/bgHeader.svg'
 
-export type Props = {
-  background: 'light' | 'dark'
-}
+import logo from '../../assets/image/logo.svg'
+import { Link } from 'react-router-dom'
 
-const Header = ({ background }: Props) => {
-  const location = useLocation()
+const Header = () => (
+  <HeaderBar style={{ backgroundImage: `url(${bgHeader})` }}>
+    <div className="container">
+      <Link to="/">
+        <img src={logo} />
+      </Link>
+      <h2>Viva experiências gastronômicas no conforto da sua casa</h2>
+    </div>
+  </HeaderBar>
+)
 
-  const titleText =
-    location.pathname === '/Perfil'
-      ? ''
-      : 'Viva experiências gastronômicas no conforto da sua casa'
-
-  const titleRestaurate = location.pathname === '/Perfil' ? 'Restaurantes' : ''
-  const titleCarrinho =
-    location.pathname === '/Perfil' ? '0 produto(s) no carrinho' : ''
-
-  return (
-    <HeaderPage className="container">
-      <Imagem
-        style={{ backgroundImage: `url(${BannerImgHome})` }}
-        background={background}
-      >
-        <div className="container">
-          <ContainerHeader>
-            <RestaurantName>{titleRestaurate}</RestaurantName>
-            <Link to="/">
-              <img
-                className="imagemLogoLnk"
-                src={LogoImgHome}
-                alt="efood"
-                width="150"
-                height="50"
-              />
-            </Link>
-            <CarrinhoDeProdutos>{titleCarrinho}</CarrinhoDeProdutos>
-          </ContainerHeader>
-          <Titulo>{titleText}</Titulo>
-        </div>
-      </Imagem>
-    </HeaderPage>
-  )
-}
-
-export default React.memo(Header)
+export default Header

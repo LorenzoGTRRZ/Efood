@@ -1,71 +1,48 @@
-import ImgPizzaSrc from '../../assets/images/pizza.png'
-import Banner from '../../components/Banner'
-import Header from '../../components/Header'
-import ProductList from '../../components/ProductList'
-import Efood from '../../models/Efood'
+import product1 from '../assets/image/product1.jpg'
 
-const ListaRestaurantMenu: Efood[] = [
+import Product from '../models/Product'
+
+export const products: Product[] = [
   {
     id: 1,
     title: 'Pizza Marguerita',
     description:
       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    infos: [''],
-    nota: '',
-    image: ImgPizzaSrc
+    image: product1
   },
   {
     id: 2,
     title: 'Pizza Marguerita',
     description:
       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    infos: [''],
-    nota: '',
-    image: ImgPizzaSrc
+    image: product1
   },
   {
     id: 3,
     title: 'Pizza Marguerita',
     description:
       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    infos: [''],
-    nota: '',
-    image: ImgPizzaSrc
+    image: product1
   },
   {
     id: 4,
     title: 'Pizza Marguerita',
     description:
       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    infos: [''],
-    nota: '',
-    image: ImgPizzaSrc
+    image: product1
   },
   {
     id: 5,
     title: 'Pizza Marguerita',
     description:
       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    infos: [''],
-    nota: '',
-    image: ImgPizzaSrc
+    image: product1
   },
   {
     id: 6,
     title: 'Pizza Marguerita',
     description:
       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    infos: [''],
-    nota: '',
-    image: ImgPizzaSrc
+    image: product1
   }
 ]
-
-const Perfil = () => (
-  <>
-    <Header background={'dark'} />
-    <Banner />
-    <ProductList title="" background={'dark'} efoods={ListaRestaurantMenu} />
-  </>
-)
-export default Perfil

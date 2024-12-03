@@ -1,33 +1,33 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const colors = {
-  rosePink: '#E66767',
-  palePeach: '#FFEBD9',
   white: '#FFFFFF',
-  goldenYellow: '#FFB930',
-  creamyWhite: '#FFF8F2'
+  red: '#E66767',
+  lightBeige: '#FFF8F2',
+  beige: '#FFEBD9',
+  yellow: '#FFB930'
 }
 
-export const GlobalCSS = createGlobalStyle`
+export const GlobalCss = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
-    text-decoration: none;
   }
 
   body {
-    background-color: ${colors.creamyWhite};
-    color:${colors.rosePink};
-    font-family:Roboto, sans-serif;
-    text-decoration: none;
-    list-style-type: none;
+    background-color: ${colors.lightBeige};
+    color: ${colors.red};
   }
-  .container {
-  max-width: 100%;
-  width: 100%;
-  margin: 0 auto;
-}
 
+  .container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  a {
+    text-decoration: none;
+  }
 `
