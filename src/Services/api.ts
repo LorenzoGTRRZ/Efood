@@ -23,7 +23,7 @@ export interface Efood {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://fake-api-tau.vercel.app/api/efood'
+    baseUrl: 'https://fake-api-tau.vercel.app/api/efood/restaurantes'
   }),
   endpoints: (builder) => ({
     getHomePage: builder.query<Efood[], void>({

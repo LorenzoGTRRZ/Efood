@@ -10,7 +10,7 @@ export const ButtonContainer = styled.button<{ background: 'light' | 'dark' }>`
     props.background === 'dark' ? colors.rosePink : colors.palePeach};
   width: ${(props) => (props.background === 'dark' ? '304px' : '100%')};
   height: 100%;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 16px;
   text-align: center;
