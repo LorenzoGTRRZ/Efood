@@ -35,7 +35,6 @@ const Header = ({ background }: Props) => {
     dispatch(open())
   }
 
-
   const titleRestaurate = id ? 'Restaurantes' : ''
   const titleCarrinho = id ? `${items.length} produto(s) no carrinho` : ''
 

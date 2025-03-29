@@ -70,8 +70,7 @@ const ProductList: React.FC<Props> = ({
         <h2>{title}</h2>
         <ProductListItem background={background}>
           {isCardapio
-            ?
-              (catalogoServico as CardapioItem[]).map((item) => (
+            ? (catalogoServico as CardapioItem[]).map((item) => (
                 <Product
                   key={item.id}
                   image={item.foto}
@@ -87,8 +86,7 @@ const ProductList: React.FC<Props> = ({
                   id={item.id}
                 />
               ))
-            :
-              (catalogoServico as Efood[]).map((efood) => (
+            : (catalogoServico as Efood[]).map((efood) => (
                 <Product
                   key={efood.id}
                   image={efood.capa}
