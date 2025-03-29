@@ -30,7 +30,7 @@ type ProductProps = {
   image: string
   infos: string[]
   title: string
-  nota?: number // Tornar 'nota' opcional
+  nota?: number
   description: string
   to: string
   background: 'light' | 'dark'

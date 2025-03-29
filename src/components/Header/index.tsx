@@ -23,7 +23,6 @@ const Header = ({ background }: Props) => {
   const location = useLocation()
   const { id } = useParams<{ id: string }>()
 
-  // Define o texto na localização atual
   const titleText =
     location.pathname === '/Perfil'
       ? ''
@@ -36,7 +35,7 @@ const Header = ({ background }: Props) => {
     dispatch(open())
   }
 
-  // Define o texto na localização atual
+
   const titleRestaurate = id ? 'Restaurantes' : ''
   const titleCarrinho = id ? `${items.length} produto(s) no carrinho` : ''
 
@@ -55,12 +54,11 @@ const Header = ({ background }: Props) => {
                 src={LogoImgHome}
                 alt="efood"
                 width="150"
-                height="50" // Define altura e largura da imagem
+                height="50"
               />
             </Link>
 
             <CarrinhoDeProdutos>
-              {/* Coloque o evento onClick no elemento que deve abrir o carrinho */}
               <CartButton onClick={openCart}>{titleCarrinho}</CartButton>
             </CarrinhoDeProdutos>
           </ContainerHeader>

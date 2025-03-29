@@ -12,7 +12,6 @@ import {
   SectionImgModal
 } from './styles'
 
-// Define a interface do ModalPoupapProps
 interface ModalPoupapProps {
   onClose: () => void
   foto: string
@@ -44,7 +43,7 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
 
   const handleAddToCart = () => {
     const item: CartItem = {
-      id: Date.now(), // Gere um ID único ou modifique conforme necessário
+      id: Date.now(),
       foto,
       descricao,
       preco,

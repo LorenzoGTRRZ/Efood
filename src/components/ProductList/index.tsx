@@ -36,7 +36,7 @@ const ProductList: React.FC<Props> = ({
           throw new Error('Erro ao carregar dados')
         }
         const data = await response.json()
-        setCatalogoServico(Array.isArray(data) ? data : [data]) // Assuming data is an array or an object
+        setCatalogoServico(Array.isArray(data) ? data : [data])
       } catch (error) {
         console.error('Erro ao carregar dados:', error)
       }
@@ -70,14 +70,13 @@ const ProductList: React.FC<Props> = ({
         <h2>{title}</h2>
         <ProductListItem background={background}>
           {isCardapio
-            ? // Renderizar informações de CardapioItem quando estiver na página Perfil/id
+            ?
               (catalogoServico as CardapioItem[]).map((item) => (
                 <Product
                   key={item.id}
                   image={item.foto}
                   infos={[]}
                   title={item.nome}
-                  // Remove a propriedade nota se for CardapioItem
                   description={item.descricao}
                   to={`/perfil/${id}`}
                   background={background}
@@ -88,7 +87,7 @@ const ProductList: React.FC<Props> = ({
                   id={item.id}
                 />
               ))
-            : // Renderizar informações de Efood quando estiver na página HOME
+            :
               (catalogoServico as Efood[]).map((efood) => (
                 <Product
                   key={efood.id}
@@ -103,7 +102,7 @@ const ProductList: React.FC<Props> = ({
                   shouldTruncateDescription={location.pathname.includes(
                     '/perfil'
                   )}
-                  id={efood.id.toString()} // Convertendo efood.id para string
+                  id={efood.id.toString()}
                 />
               ))}
         </ProductListItem>
