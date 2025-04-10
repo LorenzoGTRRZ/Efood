@@ -1,13 +1,21 @@
-import Header from '../../components/Header'
-import ProductList from '../../components/ProductList'
 import { useGetHomePageQuery } from '../../services/api'
 
+import Header from '../../components/Header'
+import ProductList from '../../components/ProductsList'
+
 const Home = () => {
-  const { data: catalogoServico = [] } = useGetHomePageQuery()
+  const { data: catalogoServico = [], isLoading: isLoadingRestaurantMenu } =
+    useGetHomePageQuery()
+
   return (
     <>
       <Header background="light" />
-      <ProductList title="" background="light" efoods={catalogoServico} />
+      <ProductList
+        title=""
+        background="light"
+        efoods={catalogoServico}
+        isLoading={isLoadingRestaurantMenu}
+      />
     </>
   )
 }

@@ -1,19 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import LogoImgHome from '../../assets/icons/logo.png'
-import BannerImgHome from '../../assets/images/BannerImgHome.png'
+
 import { RootReducer } from '../../store'
 import { open } from '../../store/reducers/cart'
-import {
-  CarrinhoDeProdutos,
-  CartButton,
-  ContainerHeader,
-  HeaderPage,
-  Imagem,
-  RestaurantName,
-  Titulo
-} from './styles'
+
+import LogoImgHome from '../../assets/icons/logo.png'
+import BannerImgHome from '../../assets/images/BannerImgHome.png'
+
+import * as S from './styles'
 
 export type Props = {
   background: 'light' | 'dark'
@@ -39,15 +34,15 @@ const Header = ({ background }: Props) => {
   const titleCarrinho = id ? `${items.length} produto(s) no carrinho` : ''
 
   return (
-    <HeaderPage className="container">
-      <Imagem
+    <S.HeaderPage className="container">
+      <S.Imagem
         style={{ backgroundImage: `url(${BannerImgHome})` }}
         background={background}
       >
         <div className="container">
-          <ContainerHeader>
-            <RestaurantName>{titleRestaurate}</RestaurantName>
-            <Link to="/">
+          <S.ContainerHeader>
+            <S.RestaurantName>{titleRestaurate}</S.RestaurantName>
+            <Link title="Clique aqui para retornar a pagina home" to="/">
               <img
                 className="imagemLogoLnk"
                 src={LogoImgHome}
@@ -57,14 +52,17 @@ const Header = ({ background }: Props) => {
               />
             </Link>
 
-            <CarrinhoDeProdutos>
-              <CartButton onClick={openCart}>{titleCarrinho}</CartButton>
-            </CarrinhoDeProdutos>
-          </ContainerHeader>
-          <Titulo>{titleText}</Titulo>
+            <S.CarrinhoDeProdutos>
+              {/* Coloque o evento onClick no elemento que deve abrir o carrinho */}
+              <S.CartButton role="button" onClick={openCart}>
+                {titleCarrinho}
+              </S.CartButton>
+            </S.CarrinhoDeProdutos>
+          </S.ContainerHeader>
+          <S.Titulo>{titleText}</S.Titulo>
         </div>
-      </Imagem>
-    </HeaderPage>
+      </S.Imagem>
+    </S.HeaderPage>
   )
 }
 

@@ -1,9 +1,27 @@
+# Definição global para todos os arquivos
 root = true
 
 [*]
+charset = utf-8
 indent_style = space
 indent_size = 2
 end_of_line = lf
-charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
+
+# Configuração específica para arquivos JSON e YAML
+[*.{json,yml,yaml}]
+indent_size = 2
+
+# Configuração para arquivos de código-fonte como JavaScript, TypeScript, HTML, CSS
+[*.{js,ts,jsx,tsx,html,css,scss}]
+indent_size = 2
+
+# Configuração para arquivos Python
+[*.py]
+indent_style = space
+indent_size = 4
+
+# Configuração para arquivos Markdown (mantém os espaços no final)
+[*.md]
+trim_trailing_whitespace = false

@@ -1,13 +1,8 @@
-// Recursos externos
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 
-// Funções
-
-// Componentes
 import Product from '../Product'
 
-// Estilos
 import Loader from '../Loader'
 import { ProductListContainer, ProductListItem } from './styles'
 
@@ -42,7 +37,7 @@ const ProductList: React.FC<Props> = ({
           throw new Error('Erro ao carregar dados')
         }
         const data = await response.json()
-        setCatalogoServico(Array.isArray(data) ? data : [data]) // Assuming data is an array or an object
+        setCatalogoServico(Array.isArray(data) ? data : [data])
       } catch (error) {
         console.error('Erro ao carregar dados:', error)
       }
@@ -51,7 +46,7 @@ const ProductList: React.FC<Props> = ({
     if (efoods && efoods.length === 0) {
       fetchData()
     } else {
-      setCatalogoServico(efoods ?? []) // Default to an empty array if efoods is undefined
+      setCatalogoServico(efoods ?? [])
     }
   }, [id, efoods])
 
@@ -76,14 +71,12 @@ const ProductList: React.FC<Props> = ({
         <h2>{title}</h2>
         <ProductListItem background={background}>
           {isCardapio
-            ? // Renderizar informações de CardapioItem quando estiver na página Perfil/id
-              (catalogoServico as CardapioItem[]).map((item) => (
+            ? (catalogoServico as CardapioItem[]).map((item) => (
                 <Product
                   key={item.id}
                   image={item.foto}
                   infos={[]}
                   title={item.nome}
-                  // Remove a propriedade nota se for CardapioItem
                   description={item.descricao}
                   to={`/perfil/${id}`}
                   background={background}
@@ -94,8 +87,7 @@ const ProductList: React.FC<Props> = ({
                   id={item.id}
                 />
               ))
-            : // Renderizar informações de Efood quando estiver na página HOME
-              (catalogoServico as Efood[]).map((efood) => (
+            : (catalogoServico as Efood[]).map((efood) => (
                 <Product
                   key={efood.id}
                   image={efood.capa}

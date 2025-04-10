@@ -1,16 +1,15 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import ImgPoupapClose from '../../assets/icons/close.png'
+
 import { add, CartItem, open } from '../../store/reducers/cart'
+
 import Botao from '../Button'
 import Tag from '../Tag'
-import {
-  CloseImg,
-  ContainerPoupap,
-  ModalImage,
-  Poupap,
-  SectionImgModal
-} from './styles'
+
+import { parseToBrl } from '../../utils'
+import * as S from './styles'
 
 interface ModalPoupapProps {
   onClose: () => void
@@ -29,13 +28,6 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
   nome,
   porcao
 }) => {
-  const formatPreco = (preco = 0) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
-  }
-
   const dispatch = useDispatch()
   const items = useSelector(
     (state: { cart: { items: CartItem[] } }) => state.cart.items
@@ -64,14 +56,14 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
 
   return (
     <div className="container">
-      <ContainerPoupap className="overlay" onClick={onClose}>
-        <Poupap onClick={(e) => e.stopPropagation()}>
-          <CloseImg onClick={onClose}>
+      <S.ContainerPoupap className="overlay" onClick={onClose}>
+        <S.Poupap onClick={(e) => e.stopPropagation()}>
+          <S.CloseImg onClick={onClose}>
             <img src={ImgPoupapClose} alt="Fechar modal" />
-          </CloseImg>
-          <SectionImgModal>
-            <ModalImage src={foto} alt="Produto" />
-          </SectionImgModal>
+          </S.CloseImg>
+          <S.SectionImgModal>
+            <S.ModalImage src={foto} alt="Produto" />
+          </S.SectionImgModal>
           <div>
             <h3>{nome}</h3>
             <p>
@@ -87,12 +79,12 @@ const ModalPoupap: React.FC<ModalPoupapProps> = ({
                 title={'Adicionar ao carrinho'}
                 background="dark"
               >
-                Adicionar ao carrinho - {formatPreco(preco)}
+                Adicionar ao carrinho - {parseToBrl(preco)}
               </Botao>
             </Tag>
           </div>
-        </Poupap>
-      </ContainerPoupap>
+        </S.Poupap>
+      </S.ContainerPoupap>
     </div>
   )
 }

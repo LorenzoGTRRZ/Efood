@@ -3,19 +3,19 @@
     "development"
   ],
   "hints": {
-    "axe/text-alternatives": [
-      "default",
-      {
-        "image-alt": "off"
-      }
-    ],
     "compat-api/html": [
       "default",
       {
         "ignore": [
-          "link[referrerpolicy]",
           "meta[name=theme-color]"
         ]
+      }
+    ],
+    "axe/text-alternatives": [
+      "default",
+      {
+        "image-alt": "off",
+        "frame-title": "off"
       }
     ]
   }
